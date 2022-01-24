@@ -9,7 +9,7 @@ export const Button = styled.button`
   cursor: pointer;
   border: none;
   background-color:   #2778e2;
-  border-radius: 5px;
+  border-radius: 6px;
 `;
 export const ButtonsWrap = styled.div`
  display:flex;
