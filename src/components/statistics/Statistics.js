@@ -1,24 +1,39 @@
-import PropTypes from "prop-types";
-import { StatWrap, StatItem } from "./Statistics.styled";
+import React from 'react';
 
-const StatisticsList = ({ good, neutral, bad, total, positivePercentage }) => {
+const Statistics = ({
+  good,
+  neutral,
+  bad,
+  totalFeedbackCount,
+  positiveFeedbackCount,
+}) => {
+  const totalCount = totalFeedbackCount();
+
   return (
-    <StatWrap>
-      <StatItem>Good: {good}</StatItem>
-      <StatItem>Neutral: {neutral}</StatItem>
-      <StatItem>Bad: {bad}</StatItem>
-      <StatItem>Total: {total}</StatItem>
-      <StatItem>Positive feedback: {positivePercentage}%</StatItem>
-    </StatWrap>
+    <div>
+      {totalCount ? (
+        <ul>
+          <li>
+            <p>Good: {good}</p>
+          </li>
+          <li>
+            <p>Neutral: {neutral}</p>
+          </li>
+          <li>
+            <p>Bad: {bad}</p>
+          </li>
+          <li>
+            <p>Total: {totalCount}</p>
+          </li>
+          <li>
+            <p>Positive feedback: {positiveFeedbackCount()}%</p>
+          </li>
+        </ul>
+      ) : (
+        <p>There is no feedback</p>
+      )}
+    </div>
   );
 };
 
-StatisticsList.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.number.isRequired,
-};
-
-export default StatisticsList;
+export default Statistics;
